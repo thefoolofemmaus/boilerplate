@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { SimonService } from '../../services/simon.service';
 
 @Component({
   selector: 'app-apicallpage',
@@ -7,5 +8,14 @@ import { Component } from '@angular/core';
   standalone: false
 })
 export class ApicallpageComponent {
+  simonService = inject(SimonService);
+  simonMessage = '';
 
+  sayHello() {
+    this.simonMessage = this.simonService.sayHello();
+  }
+
+  clearMessage() {
+    this.simonMessage = '';
+  }
 }
