@@ -12,9 +12,9 @@ export const routes: Routes = [
     },
     {
         path: 'apicallpage',
-        loadComponent: () => {
-            return import('./components/apicallpage/apicallpage.component').then(
-                m => m.ApicallpageComponent
+        loadChildren: () => {
+            return import('./components/apicallpage/apicallpage.module').then(
+                m => m.ApicallpageModule
             )
         }
     }
