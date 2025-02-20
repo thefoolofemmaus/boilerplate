@@ -10,6 +10,7 @@ import { SimonService } from '../../services/simon.service';
 export class ApicallpageComponent {
   simonService = inject(SimonService);
   simonMessage = '';
+  simonInput = 'have simon say something';
 
   sayHello() {
     this.simonMessage = this.simonService.sayHello();
@@ -17,5 +18,9 @@ export class ApicallpageComponent {
 
   clearMessage() {
     this.simonMessage = '';
+  }
+
+  saySimon() {
+    this.simonMessage = this.simonService.saySimon(this.simonInput).message;
   }
 }
