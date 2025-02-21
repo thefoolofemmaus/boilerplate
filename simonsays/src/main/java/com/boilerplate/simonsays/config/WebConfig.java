@@ -18,6 +18,12 @@ public class WebConfig {
                         .allowedMethods("GET")
                         .allowedHeaders("*")
                         .allowCredentials(false);
+
+                registry.addMapping("/simon")
+                        .allowedOrigins("*")
+                        .allowedMethods("PUT")
+                        .allowedHeaders("*")
+                        .allowCredentials(false);
             }
         };
     }
