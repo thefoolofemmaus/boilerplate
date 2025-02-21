@@ -13,8 +13,13 @@ export class SimonService {
     return this.http.get(this.url + `/hello`, { responseType: 'text'});
   }
 
-  saySimon(simonInput: string) {
+  saySimonLocal(simonInput: string) {
     const simonMessage = "Simon says: " + simonInput;
     return { message: simonMessage};
+  }
+
+  saySimon(simonInput: string) {
+    const requstBody = { simon: simonInput};
+    return this.http.put(this.url + `/simon`, requstBody);
   }
 }

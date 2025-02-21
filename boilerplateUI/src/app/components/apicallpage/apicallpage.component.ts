@@ -33,6 +33,20 @@ export class ApicallpageComponent {
   }
 
   saySimon() {
-    this.simonMessage = this.simonService.saySimon(this.simonInput).message;
+    //this.simonMessage = this.simonService.saySimonLocal(this.simonInput).message;
+    this.simonService.saySimon(this.simonInput)
+      .pipe(
+        catchError(
+          (err) => {
+            console.log(err);
+            throw err;
+          }
+        )
+      )
+      .subscribe(
+        (simonReturn) => {
+          this.simonMessage = simonReturn.message;
+        }
+      )
   }
 }
