@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { SimonService } from '../../services/simon.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-apicallpage',
@@ -13,7 +14,18 @@ export class ApicallpageComponent {
   simonInput = 'have simon say something';
 
   sayHello() {
-    this.simonMessage = this.simonService.sayHello();
+    //this.simonMessage = this.simonService.sayHello();
+    this.simonService.sayHello()
+      .pipe(
+        catchError((err) => {
+          console.log(err);
+          throw err;
+        }))
+        .subscribe(
+          (returnString: string) => {
+            this.simonMessage = returnString;
+          }
+        );
   }
 
   clearMessage() {
